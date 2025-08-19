@@ -1,11 +1,13 @@
-const Product = require('./index.js'); 
+// main.js
+const Product = require('./Product.js');
 
-const manager = new Product();
+const manager = new Product(); // Usará products.json dentro de semana2
 
+// Agregar productos
 manager.addProduct({
     id: 1,
     name: 'Teclado',
-    description: 'Teclado Inalambrico',
+    description: 'Teclado Mecánico',
     price: 25000,
     stock: 25
 });
@@ -13,24 +15,28 @@ manager.addProduct({
 manager.addProduct({
     id: 2,
     name: 'Mouse',
-    description: 'Mouse Inalambrico',
+    description: 'Mouse Óptico',
     price: 12000,
     stock: 50
 });
 
-manager.addProduct({
-    id: 1,
-    name: 'Monitor',
-    description: 'Monitor LED',
-    price: 50000,
-    stock: 10
-}); // Debe mostrar error
-
 console.log("Todos los productos:");
 console.table(manager.getProducts());
 
-console.log("Producto con id 2:");
-console.log(manager.getProductById(2));
+// Actualizar producto
+console.log("Actualizar producto id 2:");
+manager.updateProductById(2, {
+    name: 'Mouse Gamer',
+    description: 'Mouse Óptico RGB',
+    price: 15000,
+    stock: 45
+});
+console.table(manager.getProducts());
 
-console.log("Producto con id 99:");
-console.log(manager.getProductById(99)); // Debe mostrar "Not found"
+// Eliminar producto
+console.log("Eliminar producto id 1:");
+manager.deleteProductById(1);
+console.table(manager.getProducts());
+
+// Intentar eliminar producto inexistente
+manager.deleteProductById(99); // Mostrará "Not found"
