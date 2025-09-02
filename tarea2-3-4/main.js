@@ -1,9 +1,7 @@
-// main.js
 const Product = require('./Product.js');
 
-const manager = new Product(); // Usará products.json dentro de semana2
+const manager = new Product(); // usa products.json 
 
-// Agregar productos
 manager.addProduct({
     id: 1,
     name: 'Teclado',
@@ -23,7 +21,6 @@ manager.addProduct({
 console.log("Todos los productos:");
 console.table(manager.getProducts());
 
-// Actualizar producto
 console.log("Actualizar producto id 2:");
 manager.updateProductById(2, {
     name: 'Mouse Gamer',
@@ -33,10 +30,8 @@ manager.updateProductById(2, {
 });
 console.table(manager.getProducts());
 
-// Eliminar producto
 console.log("Eliminar producto id 1:");
 manager.deleteProductById(1);
 console.table(manager.getProducts());
 
-// Intentar eliminar producto inexistente
 manager.deleteProductById(99); // Mostrará "Not found"
